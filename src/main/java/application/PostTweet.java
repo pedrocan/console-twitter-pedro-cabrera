@@ -7,15 +7,15 @@ import domain.TweetRepository;
 import java.util.Date;
 import java.util.Random;
 
-public final class TweetCreator {
+public final class PostTweet {
 
     private final TweetRepository repository;
 
-    public TweetCreator(TweetRepository repository) {
+    public PostTweet(TweetRepository repository) {
         this.repository = repository;
     }
 
-    public void create(String user, String text ) {
+    public void post(String user, String text ) {
 
         Tweet tweet = new Tweet();
         tweet.setUser(user);
