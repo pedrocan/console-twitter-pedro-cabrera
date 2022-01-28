@@ -36,7 +36,7 @@ public final class ProcessorCommandInput {
 
             user = regexMatcher.group(1);
             command = regexMatcher.group(2);
-            text = regexMatcher.group(3);
+            text = regexMatcher.group(3).replaceFirst(" ", "");
 
         }else{
             user = input;

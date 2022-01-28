@@ -24,8 +24,13 @@ public class WallTweets {
         List<String> followingUsers = userRepository.getUsersFollow(user);
         List<Tweet> wallTweets = new ArrayList<>();
 
+        wallTweets.addAll(tweetRepository.fetchTweets(user));
+
         for(String userFollow: followingUsers){
-            wallTweets.addAll(tweetRepository.fetchTweets(userFollow));
+
+            List<Tweet> listUserFollow = tweetRepository.fetchTweets(userFollow);
+
+            wallTweets.addAll(listUserFollow);
         }
 
         return wallTweets;
