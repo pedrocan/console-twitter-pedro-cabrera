@@ -9,21 +9,23 @@ import java.util.List;
 
 public class InMemoryTweetRepository implements TweetRepository {
 
-    private final List<Tweet> tweets = new ArrayList<>();
+    private final List<Tweet>                  allTweetsApp = new ArrayList<>();
     private final HashMap<String, List<Tweet>> tweetsByUser = new HashMap<>();
 
     @Override
     public List<Tweet> fetchTweets(String user) {
-        tweetsByUser.get(user);
+       return tweetsByUser.get(user);
     }
 
     @Override
     public void post(Tweet tweet) {
 
-        tweets.add(tweet);
+        allTweetsApp.add(tweet);
 
-        if(tweetsByUser.get(tweet.getUser()).isEmpty()){
-            tweetsByUser.put(tweet.getUser(), tweets);
+        if(tweetsByUser.get(tweet.getUser())== null ){
+            List<Tweet> tweetsUser = new ArrayList<>();
+            tweetsUser.add(tweet);
+            tweetsByUser.put(tweet.getUser(), tweetsUser);
         }else {
             tweetsByUser.get(tweet.getUser()).add(tweet);
         }

@@ -14,6 +14,9 @@ public class AllTweetsByUserSearcher {
     }
 
     public List<Tweet> searchAll(String user){
+
+        System.out.println("Command Executed:: tweets ");
+
         return repository.fetchTweets(user);
     }
 }

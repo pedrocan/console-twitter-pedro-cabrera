@@ -17,6 +17,8 @@ public final class PostTweet {
 
     public void post(String user, String text ) {
 
+        System.out.println("Command Executed:: post ");
+
         Tweet tweet = new Tweet();
         tweet.setUser(user);
         tweet.setText(text);

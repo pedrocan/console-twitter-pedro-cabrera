@@ -11,6 +11,9 @@ public class FollowUser {
     }
 
     public void follow(String userFrom, String userTo){
+
+        System.out.println("Command Executed:: follow ");
+
         userRepository.follow(userFrom, userTo);
     }
 }
