@@ -19,17 +19,22 @@ public class ConsoleTwitter {
         instructions.append("\u001B[32m").append("reading:").append("\u001B[0m").append(" user name\n");
         instructions.append("\u001B[32m").append("following:").append("\u001B[0m").append(" user name follows another user\n");
         instructions.append("\u001B[32m").append("wall:").append("\u001B[0m").append(" user name wall\n");
-
+        instructions.append("\u001B[32m").append("exit:").append("\u001B[0m").append(" exit app\n");
         System.out.println(instructions);
 
         String input = "";
 
+        boolean continuar = true;
         //Extraer procesador de comandos
-        while(!"exit".equals(input)){
+        while(continuar){
 
             input = scan.nextLine();
-            ProcessorCommandInput.process(input);
-            System.out.println("Has introducido : " + input);
+            if("exit".equals(input)) {
+                continuar = false;
+            }else{
+                ProcessorCommandInput.process(input);
+            }
+            //System.out.println("Has introducido : " + input);
         }
 
         System.out.println("Finished.....");

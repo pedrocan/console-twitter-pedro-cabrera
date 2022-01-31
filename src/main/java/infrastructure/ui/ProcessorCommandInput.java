@@ -1,9 +1,6 @@
 package infrastructure.ui;
 
-import application.AllTweetsByUserSearcher;
-import application.FollowUser;
-import application.PostTweet;
-import application.WallTweets;
+import application.*;
 import domain.Tweet;
 import infrastructure.InMemoryTweetRepository;
 import infrastructure.InMemoryUserRepository;
@@ -48,8 +45,16 @@ public final class ProcessorCommandInput {
         }
 
         if(POST_COMMAND.equals(command)){
-            PostTweet postTweet = new PostTweet(inMemoryTweetRepository);
-            postTweet.post(user, text);
+
+            try {
+
+                PostTweet postTweet = new PostTweet(inMemoryTweetRepository);
+                postTweet.post(user, text);
+
+            }catch (IllegalArgumentException exception){
+                System.err.println(exception.getMessage());
+            }
+
         }
         if(FOLLOWS_COMMAND.equals(command)){
             FollowUser followUser = new FollowUser(inMemoryUserRepository);

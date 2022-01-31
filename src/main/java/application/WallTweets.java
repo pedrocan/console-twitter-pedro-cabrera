@@ -3,6 +3,7 @@ package application;
 import domain.Tweet;
 import domain.TweetRepository;
 import domain.UserRepository;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,13 +27,15 @@ public class WallTweets {
 
         wallTweets.addAll(tweetRepository.fetchTweets(user));
 
-        for(String userFollow: followingUsers){
+        if(followingUsers != null && !followingUsers.isEmpty()) {
+            for (String userFollow : followingUsers) {
 
-            List<Tweet> listUserFollow = tweetRepository.fetchTweets(userFollow);
-
-            wallTweets.addAll(listUserFollow);
+                if (!StringUtils.isBlank(userFollow)) {
+                    List<Tweet> listUserFollow = tweetRepository.fetchTweets(userFollow);
+                    wallTweets.addAll(listUserFollow);
+                }
+            }
         }
-
         return wallTweets;
 
     }
