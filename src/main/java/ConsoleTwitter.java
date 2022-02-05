@@ -38,6 +38,7 @@ public class ConsoleTwitter {
         }
 
         System.out.println("Finished.....");
+        scan.close();
 
     }
 }
